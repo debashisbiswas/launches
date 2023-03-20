@@ -1,20 +1,17 @@
-<script>
+<script lang="ts">
+  import { fly } from "svelte/transition";
+  import { quotes } from "./lib/quotes";
+
   let userInput = "";
-  let quote = "";
+  let quote: typeof quotes[number];
 
-  const minNumber = 1;
-  const maxNumber = 100;
-
-  const quotes = {
-    1: "The greatest glory in living lies not in never falling, but in rising every time we fall. -Nelson Mandela",
-    2: "The way to get started is to quit talking and begin doing. -Walt Disney",
-    3: "Your time is limited, don’t waste it living someone else’s life. -Steve Jobs",
-    // add more quotes as desired
-  };
+  const [minNumber, maxNumber] = [1, quotes.length];
 
   function handleSubmit() {
-    if (userInput >= minNumber && userInput <= maxNumber) {
-      quote = quotes[userInput];
+    let selection = +userInput;
+
+    if (selection >= minNumber && selection <= maxNumber) {
+      quote = quotes[selection - 1];
     }
   }
 </script>
@@ -47,14 +44,16 @@
     >
   </form>
 
-  <div class="h-20 text-3xl">
-    {#if quote}
-      <blockquote>
-        {quote}
-        <footer>
-          <cite>- Phasellus eget lacinia</cite>
-        </footer>
-      </blockquote>
-    {/if}
+  <div class="h-32 text-3xl tracking-tight">
+    {#key quote}
+      {#if quote}
+        <blockquote in:fly={{ y: -20 }}>
+          {quote[0]}
+          <footer class="text-gray-400 my-1">
+            <cite>- {quote[1]}</cite>
+          </footer>
+        </blockquote>
+      {/if}
+    {/key}
   </div>
 </div>

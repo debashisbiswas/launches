@@ -48,10 +48,15 @@
     >
   </form>
 
-  <div class="h-32 text-3xl tracking-tight">
+  <!-- Grid spacing used to avoid DOM jumping during transitions when changing quotes quickly. -->
+  <div class="h-32 text-3xl tracking-tight grid">
     {#key quote}
       {#if quote}
-        <blockquote in:fly={{ y: -20 }} out:fly={{ y: 20 }}>
+        <blockquote
+          class="row-start-1 row-end-2 col-start-1 col-end-2"
+          in:fly={{ y: -20 }}
+          out:fly={{ y: 20 }}
+        >
           {quote[0]}
           <footer class="text-gray-400 my-1">
             <cite>- {quote[1]}</cite>

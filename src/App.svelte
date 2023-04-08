@@ -11,7 +11,10 @@
     let selection = +userInput;
 
     if (selection >= minNumber && selection <= maxNumber) {
-      quote = quotes[selection - 1];
+      const newQuote = quotes[selection - 1];
+      if (quote != newQuote) {
+        quote = newQuote;
+      }
     }
   }
 </script>

@@ -31,6 +31,7 @@
         min={minNumber}
         max={maxNumber}
         bind:value={userInput}
+        on:input={() => (quote = undefined)}
         id="numberField"
         class="w-32 text-lg text-center border rounded-lg p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
         required
@@ -47,7 +48,7 @@
   <div class="h-32 text-3xl tracking-tight">
     {#key quote}
       {#if quote}
-        <blockquote in:fly={{ y: -20 }}>
+        <blockquote in:fly={{ y: -20 }} out:fly={{ y: 20 }}>
           {quote[0]}
           <footer class="text-gray-400 my-1">
             <cite>- {quote[1]}</cite>

@@ -177,10 +177,7 @@ export const quotes: readonly [quote: string, author: string][] = [
     "Success is the sum of small efforts, repeated day-in and day-out.",
     "Robert Collier",
   ],
-  [
-    "As you grow older, you will discover that you have two hands, one for helping yourself, the other for helping others.",
-    "Audrey Hepburn",
-  ],
+  ["Be the change that you wish to see in the world.", "Mahatma Gandhi"],
   [
     "If your actions inspire others to dream more, learn more, do more, and become more, you are a leader.",
     "John Quincy Adams",
